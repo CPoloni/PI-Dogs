@@ -8,13 +8,13 @@ const { API_KEY } = process.env;
 //!---------------GET/DOGS ---------------
 const allDogs = async () => {
   try {
-    // dogs de la API
+    // dogs from API
     const respApi = await axios.get(
       `https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`
     );
     const dogsApi = dataApi(respApi);
 
-    // dogs de la DB
+    // dogs from DB
     const dogsDB = await Dog.findAll({
       include: [
         {
@@ -34,9 +34,45 @@ const allDogs = async () => {
 };
 //!---------------GET/DOGS/NAME?=---------------
 
+const dogByName = async (name) => {
+  try {
+    //by name from API
+    const respApi = await axios.get(
+      `https://api.thedogapi.com/v1/breeds/search?q=${name}&&api_key=${API_KEY}`
+    );
+    const dogsApi = dataApi(respApi);
+    const dogsByNameApi = dogsApi.filter((el) => el.name === name);
+    console.log(dogsByNameApi);
+
+    //by name from DB
+    const dogsDB = await Dog.findAll({
+      where: {
+        name: name,
+      },
+      include: [
+        {
+          model: Temperament,
+          attributes: ["name"],
+          through: { attributes: [] },
+        },
+      ],
+    });
+
+    // by name API + DB
+    const dogs = [...dogsByNameApi, ...dogsDB];
+    if (dogs.length > 1) {
+      return dogs;
+    } else {
+      return "breed not found";
+    }
+  } catch {
+    throw Error(error.message);
+  }
+};
+
 module.exports = {
   allDogs,
-  // dogByName,
+  dogByName,
   // dogById,
   //createDog,
 };
