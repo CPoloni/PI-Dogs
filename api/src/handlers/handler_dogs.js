@@ -26,7 +26,7 @@ getDogById = async (req, res) => {
   const { id } = req.params;
   const source = isNaN(id) ? "DB" : "API"; //!probar esto
   try {
-    const respDogId = await dogById(id, source); //id y source se lo paso por params al controler
+    const respDogId = await dogById(id, source); //id params al controler
     return res.status(200).json(respDogId);
   } catch (error) {
     res.status(400).json({ error: error.message });
