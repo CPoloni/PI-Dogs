@@ -20,7 +20,7 @@ const dataApi = async () => {
         weight_max: parseInt(e.weight.metric.split("-")[1]),
         life_span: e.life_span,
         image: e.image.url,
-        crated: false,
+        created: false,
       };
     });
   } catch {

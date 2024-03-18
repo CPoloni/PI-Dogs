@@ -37,28 +37,19 @@ const dogByName = async (name) => {
   }
 };
 
-//!---------------GET/DOGS/:ID---------------no funciona aun ver tema de formatto ID
-const dogById = async (id, source) => {
+//!---------------GET/DOGS/:ID---------------
+const dogById = async (id) => {
   try {
-    // dogs from API
-    dogsApi = await dataApi();
-    // console.log(dogsApi);
-
-    // dogs from DB
-    dogsDB = await dataDb();
-
-    if ((source = "DB")) {
-      const dogFilterByIdDb = await dogsDB.filter((e) => e.id == id);
-      return dogFilterByIdDb;
-    } else {
-      //buscar por id en
-      const dogFilterByIdApi = await dogsApi.filter((e) => e.id == id);
-      console.log(dogFilterByIdApi);
-      return dogFilterByIdApi;
-    }
-  } catch {
-    throw Error("entra aca");
-  }
+    const todos = await allDogs();
+    const filterDog = await todos.find((dog) => dog.id == id);
+    // if (filterDog) {
+    //   return filterDog;
+    // } else {
+    //   return "no hay perro con ese ID";
+    // }
+    console.log("acaa");
+    return filterDog;
+  } catch (error) {}
 };
 
 //---------------POST/DOGS---------------
