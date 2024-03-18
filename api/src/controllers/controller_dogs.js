@@ -37,19 +37,15 @@ const dogByName = async (name) => {
   }
 };
 
-//!---------------GET/DOGS/:ID---------------
+//---------------GET/DOGS/:ID---------------
 const dogById = async (id) => {
   try {
-    const todos = await allDogs();
-    const filterDog = await todos.find((dog) => dog.id == id);
-    // if (filterDog) {
-    //   return filterDog;
-    // } else {
-    //   return "no hay perro con ese ID";
-    // }
-    console.log("acaa");
-    return filterDog;
-  } catch (error) {}
+    const dogs = await allDogs();
+    const searchDog = await dogs.find((dog) => dog.id == id);
+    return searchDog;
+  } catch {
+    throw Error(error.message);
+  }
 };
 
 //---------------POST/DOGS---------------
@@ -107,6 +103,7 @@ const createDog = async ({
 
       await newDog.addTemperament(temperamentDb);
       console.log(newDog);
+
       return "The dog was created successfully";
     } else {
       return "The dog you are trying to create already exists";
