@@ -3,14 +3,14 @@ import style from "./Cards.module.css";
 /*COMPONENTE*/
 import Card from "../card/Card";
 
-function Cards() {
+function Cards({ allDogs }) {
+  const dogList = allDogs;
+
   return (
     <div className={style.cardsContainer}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {dogList?.map((dog) => (
+        <Card dog={dog} />
+      ))}
     </div>
   );
 }

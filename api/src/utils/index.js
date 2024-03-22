@@ -19,6 +19,7 @@ const dataApi = async () => {
         weight_min: parseInt(e.weight.metric.split("-")[0]),
         weight_max: parseInt(e.weight.metric.split("-")[1]),
         life_span: e.life_span,
+        temperament: e.temperament,
         image: e.image.url,
         created: false,
       };

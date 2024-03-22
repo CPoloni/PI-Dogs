@@ -1,11 +1,13 @@
 /*STYLE*/
 import style from "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({ handleChange, handleSubmit }) {
   return (
     <div className={style.search}>
-      <input placeholder="busqueda" />
-      <button>BUSCAR</button>
+      <form onChange={handleChange}>
+        <input placeholder="busqueda" />
+        <button onClick={handleSubmit}> BUSCAR</button>
+      </form>
     </div>
   );
 }
