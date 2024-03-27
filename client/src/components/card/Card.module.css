@@ -17,3 +17,10 @@
   background-color: rgb(133, 183, 200);
   cursor: pointer;
 }
+
+.imag {
+  box-shadow: 0 0 1rem #506160, 0 0 1rem #506160;
+  width: 105px;
+  height: auto;
+  border-radius: 20%;
+}

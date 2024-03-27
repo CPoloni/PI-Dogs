@@ -1,6 +1,7 @@
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOGS_NAME = "GET_DOGS_NAME";
 export const GET_DOG_ID = "GET_DOG_ID";
+export const CLEAR_DOG_ID = "CLEAR_DOG_ID";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const ORDER_ALP = "ORDER_ALP";
 export const ORDER_WEIGHT = "ORDER_WEIGHT";

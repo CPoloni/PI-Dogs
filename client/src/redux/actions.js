@@ -5,11 +5,12 @@ import {
   GET_DOGS,
   GET_DOGS_NAME,
   GET_DOG_ID,
+  CLEAR_DOG_ID,
   GET_TEMPERAMENTS,
   CREATE_DOG,
-  // ORDER_ALP,
-  // ORDER_WEIGHT,
-  // FILTER_API_DB,
+  ORDER_ALP,
+  ORDER_WEIGHT,
+  FILTER_API_DB,
   // FILTER_TEMPERAMENT,
 } from "./actionsTypes";
 
@@ -55,6 +56,10 @@ export const getDogsId = (id) => {
   };
 };
 
+export const clearDetail = () => {
+  return { type: CLEAR_DOG_ID };
+};
+
 export const getTemperament = () => {
   return async (dispatch) => {
     try {
@@ -65,6 +70,18 @@ export const getTemperament = () => {
       throw Error(error.message);
     }
   };
+};
+
+export const orderAlp = (order) => {
+  return { type: ORDER_ALP, payload: order };
+};
+
+export const orderWeight = (order) => {
+  return { type: ORDER_WEIGHT, payload: order };
+};
+
+export const filterCreated = (filter) => {
+  return { type: FILTER_API_DB, payload: filter };
 };
 
 export const createDog = (dog) => {

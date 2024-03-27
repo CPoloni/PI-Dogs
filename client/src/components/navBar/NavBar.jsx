@@ -5,8 +5,12 @@ import { NavLink } from "react-router-dom"; //para mis botones para redirigirme,
 const NavBar = () => {
   return (
     <div>
-      <NavLink to="/home">HOME</NavLink>
-      <NavLink to="/form">CREATE</NavLink>
+      <div>
+        <NavLink to="/form">CREATE</NavLink>
+      </div>
+      <div>
+        <NavLink to="/home">HOME</NavLink>
+      </div>
     </div>
   );
 };

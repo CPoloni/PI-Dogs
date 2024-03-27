@@ -102,9 +102,9 @@ const createDog = async ({
       });
 
       await newDog.addTemperament(temperamentDb);
-      console.log(newDog);
+      return newDog;
 
-      return "The dog was created successfully";
+      //return "The dog was created successfully";
     } else {
       return "The dog you are trying to create already exists";
     }

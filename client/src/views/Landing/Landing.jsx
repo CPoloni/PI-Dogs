@@ -6,8 +6,9 @@ import { NavLink } from "react-router-dom";
 function Landing() {
   return (
     <div>
+      <h1>WELCOME</h1>
       <button>
-        <NavLink to="/home">INGRESE</NavLink>
+        <NavLink to="/home">START</NavLink>
       </button>
     </div>
   );
