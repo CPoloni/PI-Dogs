@@ -1,5 +1,5 @@
 /*STYLE*/
-import "./Home.module.css";
+import style from "./Home.module.css";
 /*HOOKS*/
 import React, { useEffect, useState } from "react"; //nos ayud a controlar el ciclo de vida
 import { useDispatch, useSelector } from "react-redux";
@@ -82,7 +82,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div className={style.boy}>
       <div>
         <div>
           <h4>order by name</h4>

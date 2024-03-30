@@ -1,15 +1,33 @@
 /*STYLE*/
-import "./Landing.module.css";
+import style from "./Landing.module.css";
 
 import { NavLink } from "react-router-dom";
 
 function Landing() {
   return (
-    <div>
-      <h1>WELCOME</h1>
-      <button>
-        <NavLink to="/home">START</NavLink>
-      </button>
+    <div className={style.body}>
+      <div>
+        <button className={style.button}>
+          <NavLink to="/home">WELCOME</NavLink>
+        </button>
+      </div>
+
+      <div className={style.textLeft}>
+        <h1>DOG APP</h1>
+      </div>
+      <div className={style.textContainer}></div>
+
+      <div className={style.text}>
+        <h1>
+          * This application was designed for you who, like us, love dogs, and
+          want to know everything about them.
+          <br></br>* We invite you to collaborate to include those we still need
+          to know.
+          <br></br>* You can also register by entering your information to add
+          it to our adoption registry to give a home to the puppies that are
+          looking for a family.
+        </h1>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../../img/fondo.jpg");
+  background-color: gold;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-attachment: fixed;
+}
