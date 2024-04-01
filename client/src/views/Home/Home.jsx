@@ -85,6 +85,9 @@ function Home() {
     <div className={style.boy}>
       <div>
         <div>
+          <NavBar />
+        </div>
+        <div>
           <h4>order by name</h4>
           <select
             onChange={(e) => {
@@ -119,9 +122,6 @@ function Home() {
           <option value="created">DB</option>
           <option value="dontCreated">API</option>
         </select>
-      </div>
-      <div>
-        <NavBar />
       </div>
 
       <div>

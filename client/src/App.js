@@ -3,6 +3,7 @@ import "./App.css";
 /*COMPONENTES TO RENDER*/
 import Detail from "./views/Detail/Detail";
 import Form from "./views/Form/Form";
+import FormAdopt from "./views/FormAdopt/FormAdopt";
 import Home from "./views/Home/Home";
 import Landing from "./views/Landing/Landing";
 
@@ -18,6 +19,7 @@ function App() {
         <Route exact path="/home" element={<Home />} />
         <Route path="/home/:id" element={<Detail />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/adopt" element={<FormAdopt />} />
       </Routes>
     </div>
   );

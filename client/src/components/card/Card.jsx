@@ -9,7 +9,7 @@ function Card({ dog }) {
   return (
     <div className={style.container}>
       <NavLink to={`/home/${id}`}>
-        <h4>{name}</h4>
+        <button>{name}</button>
       </NavLink>
       <img className={style.imag} src={image} alt="dog" />
       <h4>{temperament}</h4>

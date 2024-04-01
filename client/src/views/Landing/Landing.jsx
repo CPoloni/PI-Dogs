@@ -7,9 +7,9 @@ function Landing() {
   return (
     <div className={style.body}>
       <div>
-        <button className={style.button}>
-          <NavLink to="/home">WELCOME</NavLink>
-        </button>
+        <NavLink to="/home">
+          <button className={style.button}>WELCOME</button>
+        </NavLink>
       </div>
 
       <div className={style.textLeft}>
