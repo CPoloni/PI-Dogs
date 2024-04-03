@@ -174,25 +174,27 @@ function Form() {
         </div>
         <br />
 
-        {/* <div>
+        <div>
           <label>Temperament</label>
           <select name="temperament" onChange={handleTemp}>
             <option value="all"></option>
             {temperaments.map((temp) => {
               return (
-                <option value={temp} key={temp}>
-                  {temp}
+                <option value={temp.name} key={temp.name}>
+                  {temp.name}
                 </option>
               );
             })}
           </select>
-          {input.temperament.map((temp) => (
-            <div key={temp}>
-              <p>{temp}</p>
-              <button onClick={() => handleDeleteTemp(temp)}>X</button>
-            </div>
-          ))}
-        </div> */}
+          <div>
+            {input.temperament.map((d) => (
+              <div key={d}>
+                {temperaments.find((temp) => temp.name === d)?.name}
+                <button onClick={() => handleDeleteTemp(d)}>X</button>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <br />
 
@@ -207,6 +209,7 @@ function Form() {
             error.weight_max ||
             error.life_span ||
             error.image ||
+            !input.temperament.length ||
             !input.name
           }
         >

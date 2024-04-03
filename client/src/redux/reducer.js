@@ -9,7 +9,7 @@ import {
   ORDER_ALP,
   ORDER_WEIGHT,
   FILTER_API_DB,
-  // FILTER_TEMPERAMENT,
+  FILTER_TEMPERAMENT,
 } from "./actionsTypes";
 
 const initialState = {
@@ -52,6 +52,7 @@ const reducer = (state = initialState, action) => {
     case CREATE_DOG:
       return {
         ...state,
+        allDogs: action.payload,
       };
 
     case ORDER_ALP:
@@ -78,11 +79,23 @@ const reducer = (state = initialState, action) => {
     case FILTER_API_DB:
       const createFilter =
         action.payload === "created"
-          ? state.allDogs.filter((dog) => dog.created === true)
-          : state.allDogs.filter((dog) => !dog.created);
+          ? state.allDogs.filter((dog) => dog.createdByDB)
+          : state.allDogs.filter((dog) => !dog.createdByDB);
       return {
         ...state,
-        allDogs: createFilter,
+        allDogs: action.payload === "all" ? state.allDogs : createFilter,
+      };
+
+    case FILTER_TEMPERAMENT:
+      const tempFilter =
+        action.payload === "all"
+          ? state.allDogs
+          : state.allDogs.filter((e) => {
+              return e.temperament?.includes(action.payload);
+            });
+      return {
+        ...state,
+        allDogs: tempFilter,
       };
 
     default:

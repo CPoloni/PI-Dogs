@@ -15,6 +15,8 @@ import {
   orderAlp,
   orderWeight,
   filterCreated,
+  getTemperament,
+  filterTemperam,
 } from "../../redux/actions";
 
 function Home() {
@@ -22,18 +24,32 @@ function Home() {
 
   const allDogs = useSelector((state) => state.allDogs); //estado global(reducer)
 
+  // odeno alfabeticamente temperaments para desplegable
+  const temperaments = useSelector((state) => state.temperaments).sort(
+    (a, b) => {
+      return a - b;
+    }
+  );
+
   const pageSize = 8; //cards que se muestran por paginal
+
+  /*STATES*/
   const [currentPage, setCurrentPage] = useState(1); //estado local, pagina actual
 
   const [searchString, setSearchString] = useState(""); //estado local, string que voy a buscar
 
+  // const [filter, setFilter] = useState({
+  //   origin: "all",
+  //   temperament: "all",
+  // });
+
   useEffect(() => {
     dispatch(getDogs());
+    dispatch(getTemperament());
     //!return(()=>{clearDetail()}) para q delimpie el detalle y se desmonte min 14.51 4to video
   }, [dispatch]);
 
   /*SEARCH BY NAME*/
-
   const handleChange = (e) => {
     //me asigna el target value que va modificando lo q se encuentra dentra de la barra de busqueda
     e.preventDefault();
@@ -46,7 +62,7 @@ function Home() {
     dispatch(getDogsName(searchString));
   };
 
-  /*ORDER Y FILTERS*/
+  /*ORDER*/
 
   //orden alfabeticamente
   const handleClickOrderAlp = (e) => {
@@ -60,6 +76,7 @@ function Home() {
     dispatch(orderWeight(e.target.value));
   };
 
+  /*FILTERS*/
   //filtro segun origen
   const handleFilterCreated = (e) => {
     e.preventDefault();
@@ -67,6 +84,10 @@ function Home() {
   };
 
   //filtro temperament
+  const handleFilterTemp = (e) => {
+    e.preventDefault();
+    dispatch(filterTemperam(e.target.value));
+  };
 
   /*PAGINATION*/
 
@@ -84,9 +105,12 @@ function Home() {
   return (
     <div className={style.boy}>
       <div>
-        <div>
-          <NavBar />
-        </div>
+        <NavBar />
+      </div>
+      <div>
+        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+      </div>
+      <div>
         <div>
           <h4>order by name</h4>
           <select
@@ -106,12 +130,11 @@ function Home() {
               handleClickOrderWeight(e);
             }}
           >
-            <option value="asc">MIN</option>
+            <option value="asc">MIN </option>
             <option value="des">MAX</option>
           </select>
         </div>
       </div>
-
       <div>
         <h4>filter created</h4>
         <select
@@ -119,11 +142,33 @@ function Home() {
             handleFilterCreated(e);
           }}
         >
-          <option value="created">DB</option>
-          <option value="dontCreated">API</option>
+          <option value="all">ALL DOGS</option>
+          <option value="created">CREATED BY USERS</option>
+          <option value="api">API DOGS</option>
         </select>
       </div>
 
+      <div>
+        <h4>filter by temperament</h4>
+        <select
+          onChange={(e) => {
+            handleFilterTemp(e);
+          }}
+        >
+          <option value="all">ALL </option>
+          {temperaments.map((temp) => {
+            return (
+              <option value={temp.name} key={temp.name}>
+                {temp.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div>
+        <Cards allDogs={allDogs.slice(startIndex, endIndex)} />
+      </div>
       <div>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -138,12 +183,6 @@ function Home() {
         >
           Next
         </button>
-      </div>
-
-      <div>
-        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
-
-        <Cards allDogs={allDogs.slice(startIndex, endIndex)} />
       </div>
     </div>
   );

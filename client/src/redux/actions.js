@@ -11,7 +11,7 @@ import {
   ORDER_ALP,
   ORDER_WEIGHT,
   FILTER_API_DB,
-  // FILTER_TEMPERAMENT,
+  FILTER_TEMPERAMENT,
 } from "./actionsTypes";
 
 // creo una funcion para cada action y las exporto
@@ -82,6 +82,10 @@ export const orderWeight = (order) => {
 
 export const filterCreated = (filter) => {
   return { type: FILTER_API_DB, payload: filter };
+};
+
+export const filterTemperam = (filter) => {
+  return { type: FILTER_TEMPERAMENT, payload: filter };
 };
 
 export const createDog = (dog) => {

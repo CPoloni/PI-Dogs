@@ -8,10 +8,10 @@ const allDogs = async () => {
     dogsApi = await dataApi();
 
     // dogs from DB
-    dogsDB = await dataDb();
+    dogssDB = await dataDb();
 
     // dogs API + DB
-    const dogs = [...dogsApi, ...dogsDB];
+    const dogs = [...dogsApi, ...dogssDB];
 
     return dogs;
   } catch {
