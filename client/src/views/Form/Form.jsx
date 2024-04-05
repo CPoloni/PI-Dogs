@@ -3,8 +3,9 @@
 /*HOOKS*/
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate, Link } from "react-router-dom";
 /*COMPONENTS*/
-import NavBar from "../../components/navBar/NavBar";
+//import NavBar from "../../components/navBar/NavBar";
 import validate from "../../components/validate/Validate";
 import { getTemperament, createDog } from "../../redux/actions";
 
@@ -96,14 +97,12 @@ function Form() {
   };
 
   useEffect(() => {
-    dispatch(getTemperament());
-  }, []);
+    dispatch(getTemperament()); // Carga todos los temperamentos cuando el componente se monta
+  }, [dispatch]);
 
   return (
     <div>
-      <div>
-        <NavBar />
-      </div>
+      {redirectToHome && <Navigate to="/home" />}
       <form>
         <div>
           <label>Breed</label>
@@ -169,7 +168,12 @@ function Form() {
 
         <div>
           <label>URL Image</label>
-          <input name="image" value={input.image} onChange={handleInput} />
+          <input
+            type="url"
+            name="image"
+            value={input.image}
+            onChange={handleInput}
+          />
           <span>{error.image}</span>
         </div>
         <br />
@@ -179,11 +183,7 @@ function Form() {
           <select name="temperament" onChange={handleTemp}>
             <option value="all"></option>
             {temperaments.map((temp) => {
-              return (
-                <option value={temp.name} key={temp.name}>
-                  {temp.name}
-                </option>
-              );
+              return <option value={temp.name}>{temp.name}</option>;
             })}
           </select>
           <div>
@@ -215,9 +215,12 @@ function Form() {
         >
           CREATE NEW DOG
         </button>
+        <Link to="/home">
+          <button>BACK TO HOME</button>
+        </Link>
       </form>
     </div>
   ); // desactivar boton CREATED SI HAY ERRORES
-}
+} //!poner la navbar otra vez
 
 export default Form;

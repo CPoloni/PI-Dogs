@@ -32,14 +32,42 @@ export const getDogs = () => {
   };
 };
 
+// export const getDogsName = (name) => {
+//   return async (dispatch) => {
+//     try {
+//       const resp = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+//       const data = resp.data;
+//       if (data.length === 0) {
+//         alert("there is no result for this search");
+//       } else {
+//         return dispatch({ type: GET_DOGS_NAME, payload: data });
+//       }
+//     } catch (error) {
+//       alert(error.data.error);
+//     }
+//   };
+// };
 export const getDogsName = (name) => {
   return async (dispatch) => {
     try {
-      const resp = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+      let resp;
+      //si el campo de busqueda esta vacio llamo a todos
+      if (name.trim() === "") {
+        resp = await axios.get("http://localhost:3001/dogs");
+      } else {
+        //si hay algun string ingresado realizar la busqueda
+        resp = await axios.get(`http://localhost:3001/dogs?name=${name}`);
+      }
+
       const data = resp.data;
-      return dispatch({ type: GET_DOGS_NAME, payload: data });
+      //si no encuentra coincidencia no busca
+      if (data.length === 0) {
+        alert("there is no result for this search");
+      } else {
+        dispatch({ type: GET_DOGS_NAME, payload: data });
+      }
     } catch (error) {
-      throw Error(error.message);
+      alert(error.resp.error);
     }
   };
 };

@@ -10,7 +10,7 @@ const validate = ({
   const errors = {};
 
   //valida que sea una cadena unicamente de letras y no contenga ningun otro caracter
-  const regexName = /^[a-zA-Z]+$/;
+  const regexName = /^[a-zA-Z\s]+$/;
   const regexIntegerNum = /^\d+$/; //!
 
   /* NAME VALIDATION*/

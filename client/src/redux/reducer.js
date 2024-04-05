@@ -14,7 +14,7 @@ import {
 
 const initialState = {
   allDogs: [],
-  dogsCopy: [],
+  dogsCopy: [], //copia del estado alldogs para poder regresar al estado original
   dogDetail: [],
   temperaments: [],
 };
@@ -73,24 +73,22 @@ const reducer = (state = initialState, action) => {
         ...state,
         allDogs: weightOrder,
       };
-    //! trabajando aca
 
-    //Filtro dogs segun origen (API - DB)
     case FILTER_API_DB:
       const createFilter =
         action.payload === "created"
-          ? state.allDogs.filter((dog) => dog.createdByDB)
-          : state.allDogs.filter((dog) => !dog.createdByDB);
+          ? state.dogsCopy.filter((dog) => dog.createdByDB)
+          : state.dogsCopy.filter((dog) => !dog.createdByDB);
       return {
         ...state,
-        allDogs: action.payload === "all" ? state.allDogs : createFilter,
+        allDogs: action.payload === "all" ? state.dogsCopy : createFilter,
       };
 
     case FILTER_TEMPERAMENT:
       const tempFilter =
         action.payload === "all"
-          ? state.allDogs
-          : state.allDogs.filter((e) => {
+          ? state.dogsCopy
+          : state.dogsCopy.filter((e) => {
               return e.temperament?.includes(action.payload);
             });
       return {

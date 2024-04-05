@@ -11,19 +11,18 @@ import SearchBar from "../../components/searchBar/SearchBar";
 
 import {
   getDogs,
-  getDogsName,
   orderAlp,
   orderWeight,
   filterCreated,
-  getTemperament,
   filterTemperam,
+  getTemperament,
 } from "../../redux/actions";
 
 function Home() {
   const dispatch = useDispatch();
 
   const allDogs = useSelector((state) => state.allDogs); //estado global(reducer)
-
+  //!ver poner en reducer el orrdenamiento alfab
   // odeno alfabeticamente temperaments para desplegable
   const temperaments = useSelector((state) => state.temperaments).sort(
     (a, b) => {
@@ -36,31 +35,10 @@ function Home() {
   /*STATES*/
   const [currentPage, setCurrentPage] = useState(1); //estado local, pagina actual
 
-  const [searchString, setSearchString] = useState(""); //estado local, string que voy a buscar
-
-  // const [filter, setFilter] = useState({
-  //   origin: "all",
-  //   temperament: "all",
-  // });
-
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getTemperament());
-    //!return(()=>{clearDetail()}) para q delimpie el detalle y se desmonte min 14.51 4to video
   }, [dispatch]);
-
-  /*SEARCH BY NAME*/
-  const handleChange = (e) => {
-    //me asigna el target value que va modificando lo q se encuentra dentra de la barra de busqueda
-    e.preventDefault();
-    setSearchString(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    //cuando le haga click a submit me haga un filtrado de todos los dogs con el nombre que ingrese al imput
-    e.preventDefault();
-    dispatch(getDogsName(searchString));
-  };
 
   /*ORDER*/
 
@@ -108,7 +86,7 @@ function Home() {
         <NavBar />
       </div>
       <div>
-        <SearchBar handleChange={handleChange} handleSubmit={handleSubmit} />
+        <SearchBar />
       </div>
       <div>
         <div>

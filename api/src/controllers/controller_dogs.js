@@ -29,10 +29,9 @@ const dogByName = async (name) => {
     );
     if (dogFilterByName.length > 0) {
       return dogFilterByName;
-    } else {
-      return "breed not found";
     }
-  } catch {
+    //else {
+  } catch (error) {
     throw Error(error.message);
   }
 };
@@ -58,7 +57,6 @@ const createDog = async ({
   life_span,
   image,
   temperament,
-  createdByDB,
 }) => {
   try {
     //verifico que el usuario complet todos los datos
@@ -70,10 +68,9 @@ const createDog = async ({
       !weight_max ||
       !life_span ||
       !image ||
-      !temperament ||
-      !createdByDB
+      !temperament
     ) {
-      return "All fields must be complete";
+      throw new Error("All fields must be complete");
     }
     // verifico por nombre, que dog no exista en la base de datos ni la api
 
@@ -93,20 +90,19 @@ const createDog = async ({
         life_span,
         image,
         temperament,
-        createdByDB,
       });
 
       const temperamentDb = await Temperament.findAll({
-        //deberia ser un findOrCreate
         where: { name: temperament },
       });
 
       await newDog.addTemperament(temperamentDb);
+      console.log(newDog);
       return newDog;
 
       //return "The dog was created successfully";
     } else {
-      return "The dog you are trying to create already exists";
+      throw new Error("The dog you are trying to create already exists");
     }
   } catch (error) {
     throw Error(error.message);

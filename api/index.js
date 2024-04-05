@@ -23,7 +23,7 @@ const { tempDogs } = require("./src/controllers/controller_temperament.js");
 
 // Syncing all the models at once.
 //!cuando termine cambiar a false para al menos tener algunos videgames creados en el momento de la correccion
-conn.sync({ force: true }).then(() => {
+conn.sync({ force: false }).then(() => {
   tempDogs();
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
