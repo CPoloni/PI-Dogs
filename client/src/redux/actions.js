@@ -92,7 +92,7 @@ export const getTemperament = () => {
   return async (dispatch) => {
     try {
       const resp = await axios.get("http://localhost:3001/temperament");
-      const data = resp.data;
+      const data = resp.data.sort((a, b) => a.name.localeCompare(b.name));
       return dispatch({ type: GET_TEMPERAMENTS, payload: data });
     } catch (error) {
       throw Error(error.message);

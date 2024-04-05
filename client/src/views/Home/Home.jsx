@@ -22,13 +22,8 @@ function Home() {
   const dispatch = useDispatch();
 
   const allDogs = useSelector((state) => state.allDogs); //estado global(reducer)
-  //!ver poner en reducer el orrdenamiento alfab
-  // odeno alfabeticamente temperaments para desplegable
-  const temperaments = useSelector((state) => state.temperaments).sort(
-    (a, b) => {
-      return a - b;
-    }
-  );
+
+  const temperaments = useSelector((state) => state.temperaments);
 
   const pageSize = 8; //cards que se muestran por paginal
 

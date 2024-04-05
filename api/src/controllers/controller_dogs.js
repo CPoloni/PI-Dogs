@@ -56,7 +56,6 @@ const createDog = async ({
   weight_max,
   life_span,
   image,
-  temperament,
 }) => {
   try {
     //verifico que el usuario complet todos los datos
@@ -67,8 +66,7 @@ const createDog = async ({
       !weight_min ||
       !weight_max ||
       !life_span ||
-      !image ||
-      !temperament
+      !image
     ) {
       throw new Error("All fields must be complete");
     }
@@ -89,7 +87,6 @@ const createDog = async ({
         weight_max,
         life_span,
         image,
-        temperament,
       });
 
       const temperamentDb = await Temperament.findAll({
