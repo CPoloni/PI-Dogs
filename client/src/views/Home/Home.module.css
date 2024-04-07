@@ -1,10 +1,31 @@
-.body {
-  margin: 0;
-  padding: 0;
-  background-image: url("../../img/fondo.jpg");
-  background-color: gold;
-  background-repeat: no-repeat;
-  background-size: cover;
+.Home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../../img/fondo\ blanco.jpg");
+}
 
-  background-attachment: fixed;
+.Home .filters {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 760px;
+  margin-top: 20px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  place-content: center;
+  grid-template-columns: repeat(auto-fit, 120px);
+}
+
+.Home__filters > select {
+  height: 30px;
+  outline: none;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+}
+
+.Home__filters option {
+  background-color: var(--primary-color);
 }

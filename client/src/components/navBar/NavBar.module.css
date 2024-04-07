@@ -1,15 +1,24 @@
-.nav {
-  padding: 30px;
+/* .navBar {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 20px;
-}
-.button {
-  padding: 10px;
-  background-color: rgb(196, 214, 90);
-}
+  width: 100%;
+  height: 150px;
 
-.button:hover {
-  background-color: rgb(122, 162, 176);
+  margin: auto;
+  width: 100%;
+  cursor: pointer;
+  background: #f2b50f;
 }
+.lblMenu {
+  display: flex;
+}
+.lblMenu label {
+  display: inline-block;
+  top: 50px;
+  padding: 20px;
+  color: black;
+  cursor: pointer;
+  transition: all 400ms else;
+}
+.lblMenu label:hover {
+  background: #fbcc43;
+} */

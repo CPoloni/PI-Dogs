@@ -1,5 +1,5 @@
 /*STYLE*/
-import style from "./SearchBar.css";
+import style from "./SearchBar.module.css";
 /*HOOKS*/
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";

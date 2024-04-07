@@ -74,88 +74,80 @@ function Home() {
   const getCurrentPageNumber = () => {
     return currentPage;
   };
-
   return (
-    <div className={style.boy}>
+    <div>
       <div>
         <NavBar />
       </div>
-      <div>
-        <SearchBar />
-      </div>
-      <div>
+      <div className={style.Home}>
         <div>
-          <h4>order by name</h4>
+          <SearchBar />
+        </div>
+        <section className={style.filters}>
           <select
             onChange={(e) => {
               handleClickOrderAlp(e);
             }}
           >
-            <option value="asc">A - Z</option>
-            <option value="des">Z - A</option>
+            <option value="null">Name</option>
+            <option value="asc">a-z</option>
+            <option value="des">z-a</option>
           </select>
-        </div>
 
-        <div>
-          <h4>order by weight</h4>
           <select
             onChange={(e) => {
               handleClickOrderWeight(e);
             }}
           >
-            <option value="asc">MIN </option>
-            <option value="des">MAX</option>
+            <option value="null">Weight</option>
+            <option value="asc">Min </option>
+            <option value="des">Max</option>
           </select>
+
+          <select
+            onChange={(e) => {
+              handleFilterCreated(e);
+            }}
+          >
+            <option value="null">Source</option>
+            <option value="created">DB</option>
+            <option value="api">API</option>
+          </select>
+
+          <select
+            onChange={(e) => {
+              handleFilterTemp(e);
+            }}
+          >
+            <option value="null">Temperament </option>
+            {temperaments.map((temp) => {
+              return (
+                <option value={temp.name} key={temp.name}>
+                  {temp.name}
+                </option>
+              );
+            })}
+          </select>
+        </section>
+
+        <div>
+          <Cards allDogs={allDogs.slice(startIndex, endIndex)} />
         </div>
-      </div>
-      <div>
-        <h4>filter created</h4>
-        <select
-          onChange={(e) => {
-            handleFilterCreated(e);
-          }}
-        >
-          <option value="all">ALL DOGS</option>
-          <option value="created">CREATED BY USERS</option>
-          <option value="api">API DOGS</option>
-        </select>
-      </div>
-
-      <div>
-        <h4>filter by temperament</h4>
-        <select
-          onChange={(e) => {
-            handleFilterTemp(e);
-          }}
-        >
-          <option value="all">ALL </option>
-          {temperaments.map((temp) => {
-            return (
-              <option value={temp.name} key={temp.name}>
-                {temp.name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
-
-      <div>
-        <Cards allDogs={allDogs.slice(startIndex, endIndex)} />
-      </div>
-      <div>
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        <button>{getCurrentPageNumber()}</button>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={endIndex >= allDogs.length}
-        >
-          Next
-        </button>
+        <div>
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Prev
+          </button>
+          <button>{getCurrentPageNumber()}</button>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={endIndex >= allDogs.length}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

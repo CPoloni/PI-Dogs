@@ -103,6 +103,7 @@ function Form() {
   return (
     <div>
       {redirectToHome && <Navigate to="/home" />}
+
       <form>
         <div>
           <label>Breed</label>

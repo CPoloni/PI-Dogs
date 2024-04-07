@@ -1,29 +1,66 @@
-.container {
+.card {
   display: flex;
   flex-direction: column;
-  color: aliceblue;
-  background-color: lightblue;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 20px;
-  width: 150px;
-  height: auto;
-}
-
-.container:hover {
-  background-color: rgb(67, 106, 118);
-  box-shadow: 0 0 1rem #506160, 0 0 1rem #506160;
-  transition: 1s;
-  background-color: rgb(133, 183, 200);
+  width: 100%;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden; /* lo que esta fuera del contenedor no se muestra*/
+  background: #fff;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+  transition: all 400ms else;
   cursor: pointer;
 }
 
-.imag {
-  box-shadow: 0 0 1rem #506160, 0 0 1rem #506160;
-  width: 105px;
-  height: auto;
-  display: flex;
-  justify-content: center;
+.card:hover {
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.7);
+  transform: translateY(-4%);
+}
 
-  border-radius: 20%;
+.card img {
+  width: 100%;
+  height: 210px;
+} /* VER PROPORCIONES*/
+
+.card .cont {
+  height: 220px;
+  padding: 10px;
+  text-align: center;
+}
+
+.card .cont h3 {
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.card .cont p {
+  line-height: 1.5;
+  color: rgb(20, 18, 18);
+}
+
+.card .contbutton {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border-color: blue;
+
+  margin-bottom: 10px;
+
+  width: 100%;
+}
+
+.card .button {
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 4px;
+  color: rgb(47, 45, 45);
+  border: 1px solid rgb(47, 45, 45);
+  border-radius: 4px;
+  transition: all 400ms else;
+}
+
+.card .button:hover {
+  background: rgb(225, 213, 48);
+  color: rgb(47, 45, 45);
 }
