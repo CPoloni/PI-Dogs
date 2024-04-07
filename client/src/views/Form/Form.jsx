@@ -1,11 +1,11 @@
 /*STYLE*/
-//import "./Form.module.css";
+import style from "./Form.module.css";
 /*HOOKS*/
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Link } from "react-router-dom";
 /*COMPONENTS*/
-//import NavBar from "../../components/navBar/NavBar";
+import NavBar from "../../components/navBar/NavBar";
 import validate from "../../components/validate/Validate";
 import { getTemperament, createDog } from "../../redux/actions";
 
@@ -101,10 +101,14 @@ function Form() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={style.form}>
+      <div>
+        <NavBar />
+      </div>
+
       {redirectToHome && <Navigate to="/home" />}
 
-      <form>
+      <form className={style.container}>
         <div>
           <label>Breed</label>
           <input name="name" value={input.name} onChange={handleInput} />

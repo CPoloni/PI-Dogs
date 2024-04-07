@@ -1,24 +1,43 @@
-/* .navBar {
-  display: flex;
+header {
   width: 100%;
-  height: 150px;
-
-  margin: auto;
-  width: 100%;
-  cursor: pointer;
+  overflow: hidden;
   background: #f2b50f;
+  margin-bottom: 20px;
 }
-.lblMenu {
-  display: flex;
+
+.wrapper {
+  margin: auto; /* Centramos los elementos */
+  overflow: hidden; /* Eliminamos errores de float */
 }
-.lblMenu label {
+
+header .logo {
+  color: #fff;
+  font-size: 50px;
+  line-height: 150px;
+  float: left;
+  margin-left: 20px;
+}
+
+header nav {
+  float: right;
+  line-height: 150px;
+  margin-right: 20px;
+  gap: 100px;
+}
+
+header nav a {
   display: inline-block;
-  top: 50px;
-  padding: 20px;
-  color: black;
-  cursor: pointer;
-  transition: all 400ms else;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  line-height: normal;
+  font-size: 25px;
+  font-weight: bold;
+
+  transition: all 500ms ease;
 }
-.lblMenu label:hover {
-  background: #fbcc43;
-} */
+
+header nav a:hover {
+  background: #f9ce63;
+  border-radius: 10px;
+}

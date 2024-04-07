@@ -6,24 +6,33 @@
   background-image: url("../../img/fondo\ blanco.jpg");
 }
 
+.contfiltSearch {
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 175px;
+  justify-content: space-between;
+}
+
 .Home .filters {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 760px;
-  margin-top: 20px;
+
   padding: 12px;
   display: grid;
-  gap: 10px;
+  height: 20px;
+  gap: 40px;
   place-content: center;
-  grid-template-columns: repeat(auto-fit, 120px);
+  grid-template-columns: repeat(auto-fit, 150px);
 }
 
-.Home__filters > select {
+.Home .select {
   height: 30px;
   outline: none;
-  border: 1px solid var(--primary-color);
   background-color: transparent;
+  border-radius: 4px;
 }
 
 .Home__filters option {

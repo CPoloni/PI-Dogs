@@ -36,19 +36,19 @@ function SearchBar() {
   }, [searchString, dispatch]);
 
   return (
-    <div className={style.search}>
-      <form onSubmit={handleSubmit} className="search">
-        <div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div className={style.search}>
           <input
+            className={style.input}
             type="search"
             onChange={handleChange}
             placeholder="Write a breed name"
           />
+          <button className={style.button} onClick={handleSubmit} type="submit">
+            Search
+          </button>
         </div>
-        <button onClick={handleSubmit} type="submit">
-          {" "}
-          SEARCH
-        </button>
       </form>
     </div>
   );

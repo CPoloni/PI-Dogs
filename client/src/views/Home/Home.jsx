@@ -80,55 +80,61 @@ function Home() {
         <NavBar />
       </div>
       <div className={style.Home}>
-        <div>
-          <SearchBar />
+        <div className={style.contfiltSearch}>
+          <div>
+            <SearchBar />
+          </div>
+          <section className={style.filters}>
+            <select
+              className={style.select}
+              onChange={(e) => {
+                handleClickOrderAlp(e);
+              }}
+            >
+              <option value="null">Name</option>
+              <option value="asc">a-z</option>
+              <option value="des">z-a</option>
+            </select>
+
+            <select
+              className={style.select}
+              onChange={(e) => {
+                handleClickOrderWeight(e);
+              }}
+            >
+              <option value="null">Weight</option>
+              <option value="asc">Min </option>
+              <option value="des">Max</option>
+            </select>
+
+            <select
+              className={style.select}
+              onChange={(e) => {
+                handleFilterCreated(e);
+              }}
+            >
+              <option value="null">Source</option>
+              <option value="created">DB</option>
+              <option value="api">API</option>
+            </select>
+
+            <select
+              className={style.select}
+              onChange={(e) => {
+                handleFilterTemp(e);
+              }}
+            >
+              <option value="null">Temperament </option>
+              {temperaments.map((temp) => {
+                return (
+                  <option value={temp.name} key={temp.name}>
+                    {temp.name}
+                  </option>
+                );
+              })}
+            </select>
+          </section>
         </div>
-        <section className={style.filters}>
-          <select
-            onChange={(e) => {
-              handleClickOrderAlp(e);
-            }}
-          >
-            <option value="null">Name</option>
-            <option value="asc">a-z</option>
-            <option value="des">z-a</option>
-          </select>
-
-          <select
-            onChange={(e) => {
-              handleClickOrderWeight(e);
-            }}
-          >
-            <option value="null">Weight</option>
-            <option value="asc">Min </option>
-            <option value="des">Max</option>
-          </select>
-
-          <select
-            onChange={(e) => {
-              handleFilterCreated(e);
-            }}
-          >
-            <option value="null">Source</option>
-            <option value="created">DB</option>
-            <option value="api">API</option>
-          </select>
-
-          <select
-            onChange={(e) => {
-              handleFilterTemp(e);
-            }}
-          >
-            <option value="null">Temperament </option>
-            {temperaments.map((temp) => {
-              return (
-                <option value={temp.name} key={temp.name}>
-                  {temp.name}
-                </option>
-              );
-            })}
-          </select>
-        </section>
 
         <div>
           <Cards allDogs={allDogs.slice(startIndex, endIndex)} />
