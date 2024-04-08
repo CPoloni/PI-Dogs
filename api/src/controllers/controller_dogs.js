@@ -1,5 +1,6 @@
 const { Dog, Temperament } = require("../db");
 const { dataApi, dataDb } = require("../utils/index"); //FUNCION REUTILIZABLE PARA TRAER INFO DE API
+const { Op } = require("sequelize");
 
 //---------------GET/DOGS ---------------
 const allDogs = async () => {
@@ -56,6 +57,7 @@ const createDog = async ({
   weight_max,
   life_span,
   image,
+  temperament,
 }) => {
   try {
     //verifico que el usuario complet todos los datos
@@ -90,8 +92,10 @@ const createDog = async ({
       });
 
       const temperamentDb = await Temperament.findAll({
+        //le voy a poner
         where: { name: temperament },
       });
+      console.log(temperamentDb);
 
       await newDog.addTemperament(temperamentDb);
       console.log(newDog);

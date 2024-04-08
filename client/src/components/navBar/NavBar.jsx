@@ -7,7 +7,7 @@ const NavBar = () => {
       <div>
         <div className={style.logo}>DOG APP</div>
         <nav>
-          <a href="/">WEELCOME</a>
+          <a href="/">WELCOME</a>
           <a href="/home">HOME</a>
           <a href="/form">NEW DOG</a>
         </nav>

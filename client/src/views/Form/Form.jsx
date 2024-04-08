@@ -188,7 +188,11 @@ function Form() {
           <select name="temperament" onChange={handleTemp}>
             <option value="all"></option>
             {temperaments.map((temp) => {
-              return <option value={temp.name}>{temp.name}</option>;
+              return (
+                <option value={temp.name} key={temp.name}>
+                  {temp.name}
+                </option>
+              );
             })}
           </select>
           <div>

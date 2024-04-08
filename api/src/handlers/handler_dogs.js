@@ -24,7 +24,6 @@ getDogs = async (req, res) => {
 //---GET DOG BY ID---//
 getDogById = async (req, res) => {
   const { id } = req.params;
-  //const source = isNaN(id) ? "DB" : "API"; //!probar esto
   try {
     const respDogId = await dogById(id); //id params al controler
     return res.status(200).json(respDogId);
@@ -43,5 +42,4 @@ postDogs = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
-
 module.exports = { getDogs, getDogById, postDogs };

@@ -15,7 +15,7 @@ const tempDogs = async () => {
       .flat();
     // set()elimina los elementos duplicados de la matriz
     const tempUni = [...new Set(temperaments)];
-    //return tempUni.sort(); // para ver claro que no se repiten
+   
     tempUni.map((e) => {
       Temperament.findOrCreate({
         // lo busco, si no esta lo creo

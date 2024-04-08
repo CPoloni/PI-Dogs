@@ -53,6 +53,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allDogs: action.payload,
+        temperaments: action.payload,
       };
 
     case ORDER_ALP:

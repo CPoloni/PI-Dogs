@@ -32,21 +32,6 @@ export const getDogs = () => {
   };
 };
 
-// export const getDogsName = (name) => {
-//   return async (dispatch) => {
-//     try {
-//       const resp = await axios.get(`http://localhost:3001/dogs?name=${name}`);
-//       const data = resp.data;
-//       if (data.length === 0) {
-//         alert("there is no result for this search");
-//       } else {
-//         return dispatch({ type: GET_DOGS_NAME, payload: data });
-//       }
-//     } catch (error) {
-//       alert(error.data.error);
-//     }
-//   };
-// };
 export const getDogsName = (name) => {
   return async (dispatch) => {
     try {
@@ -95,7 +80,7 @@ export const getTemperament = () => {
       const data = resp.data.sort((a, b) => a.name.localeCompare(b.name));
       return dispatch({ type: GET_TEMPERAMENTS, payload: data });
     } catch (error) {
-      throw Error(error.message);
+      throw error;
     }
   };
 };
