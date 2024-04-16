@@ -92,7 +92,6 @@ const createDog = async ({
       });
 
       const temperamentDb = await Temperament.findAll({
-        //le voy a poner
         where: { name: temperament },
       });
       console.log(temperamentDb);

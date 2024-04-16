@@ -42,8 +42,19 @@ const dataDb = async () => {
         },
       ],
     });
-    return dogsFromDb;
-  } catch {
+
+    return dogsFromDb.map((e) => {
+      // console.log(e.temperaments.map((t) => t.name).join(", "));
+      const temp = {
+        ...e.dataValues,
+        temperament: e.temperaments.map((t) => t.name).join(", "),
+      };
+      delete temp.temperaments;
+
+      return temp;
+    });
+  } catch (error) {
+    console.log(error);
     throw Error(error.message);
   }
 };

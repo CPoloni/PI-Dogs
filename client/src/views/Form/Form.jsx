@@ -53,14 +53,10 @@ function Form() {
     if (input.temperament.includes(value)) {
       return alert("Temperament was already selected");
     }
-    if (value === "all") {
-      //ver que hace esto
-      return;
-    }
     setInput({
       //actualizo estado input
       ...input,
-      temperament: [...input.temperament, value],
+      temperament: [...input.temperament, value], //!crear un  estado local para guardar los temperamentos seleccionados
     });
     setError(
       //validolos datos ingresados
@@ -186,7 +182,6 @@ function Form() {
         <div>
           <label>Temperament</label>
           <select name="temperament" onChange={handleTemp}>
-            <option value="all"></option>
             {temperaments.map((temp) => {
               return (
                 <option value={temp.name} key={temp.name}>

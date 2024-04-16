@@ -113,7 +113,7 @@ function Home() {
                 handleFilterCreated(e);
               }}
             >
-              <option value="null">Source</option>
+              <option value="all">Source</option>
               <option value="created">DB</option>
               <option value="api">API</option>
             </select>
@@ -124,7 +124,7 @@ function Home() {
                 handleFilterTemp(e);
               }}
             >
-              <option value="null">Temperament </option>
+              <option value="all">Temperament </option>
               {temperaments.map((temp) => {
                 return (
                   <option value={temp.name} key={temp.name}>

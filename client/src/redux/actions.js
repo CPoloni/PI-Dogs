@@ -25,6 +25,9 @@ export const getDogs = () => {
     try {
       const resp = await axios.get("http://localhost:3001/dogs");
       const data = resp.data; // ver este .data
+      // console.log(
+      //   data.find((e) => e.id === "73351153-ed6e-4dae-b6c4-c1028c18b5bd")
+      // );
       return dispatch({ type: GET_DOGS, payload: data });
     } catch (error) {
       throw Error(error.message);
