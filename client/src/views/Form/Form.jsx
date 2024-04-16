@@ -3,7 +3,6 @@ import style from "./Form.module.css";
 /*HOOKS*/
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Link } from "react-router-dom";
 /*COMPONENTS*/
 import NavBar from "../../components/navBar/NavBar";
 import validate from "../../components/validate/Validate";
@@ -25,10 +24,8 @@ function Form() {
     image: "",
     temperament: [],
   });
-  //! ver esta funcion
-  const [redirectToHome, setRedirectToHome] = useState(false); //Redirige a home una vez completo el formulario
 
-  const [error, setError] = useState({}); //Redirige a home una vez completo el formulario
+  const [error, setError] = useState({});
 
   /*MANEJADORES DE EVENTOS*/
   //si hay un input hay un handlechange para q se setee el valor del input
@@ -56,7 +53,7 @@ function Form() {
     setInput({
       //actualizo estado input
       ...input,
-      temperament: [...input.temperament, value], //!crear un  estado local para guardar los temperamentos seleccionados
+      temperament: [...input.temperament, value],
     });
     setError(
       //validolos datos ingresados
@@ -89,7 +86,7 @@ function Form() {
       temperament: [],
     });
     setError({});
-    setRedirectToHome(true);
+    window.location.reload(); // recargo la pagina del Form
   };
 
   useEffect(() => {
@@ -102,37 +99,35 @@ function Form() {
         <NavBar />
       </div>
 
-      {redirectToHome && <Navigate to="/home" />}
-
-      <form className={style.container}>
+      <form className={style.newDogform}>
         <div>
-          <label>Breed</label>
+          <label>Breed </label>
           <input name="name" value={input.name} onChange={handleInput} />
+
           <span>{error.name}</span>
         </div>
-        <br />
 
         <div>
-          <label>Minimun height</label>
+          <label>Minimun height </label>
           <input
             name="height_min"
             value={input.height_min}
             onChange={handleInput}
           />
+
           <span>{error.height_min}</span>
         </div>
-        <br />
 
         <div>
-          <label>Maximum weight</label>
+          <label>Maximum weight </label>
           <input
             name="height_max"
             value={input.height_max}
             onChange={handleInput}
           />
+
           <span>{error.height_max}</span>
         </div>
-        <br />
 
         <div>
           <label>Minimun weight</label>
@@ -143,7 +138,6 @@ function Form() {
           />
           <span>{error.weight_min}</span>
         </div>
-        <br />
 
         <div>
           <label>Maximum weight</label>
@@ -154,7 +148,6 @@ function Form() {
           />
           <span>{error.weight_max}</span>
         </div>
-        <br />
 
         <div>
           <label>Life span</label>
@@ -165,7 +158,6 @@ function Form() {
           />
           <span>{error.life_span}</span>
         </div>
-        <br />
 
         <div>
           <label>URL Image</label>
@@ -177,7 +169,6 @@ function Form() {
           />
           <span>{error.image}</span>
         </div>
-        <br />
 
         <div>
           <label>Temperament</label>
@@ -194,7 +185,7 @@ function Form() {
             {input.temperament.map((d) => (
               <div key={d}>
                 {temperaments.find((temp) => temp.name === d)?.name}
-                <button onClick={() => handleDeleteTemp(d)}>X</button>
+                <button onClick={() => handleDeleteTemp(d)}> X </button>
               </div>
             ))}
           </div>
@@ -219,12 +210,9 @@ function Form() {
         >
           CREATE NEW DOG
         </button>
-        <Link to="/home">
-          <button>BACK TO HOME</button>
-        </Link>
       </form>
     </div>
-  ); // desactivar boton CREATED SI HAY ERRORES
-} //!poner la navbar otra vez
+  );
+}
 
 export default Form;

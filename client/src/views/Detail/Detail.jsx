@@ -38,11 +38,15 @@ function Detail() {
             <h1> {dogId.name}</h1>
           </div>
           <div className={style.cont}>
-            <p> Temperament: {dogId.temperament}</p>
-            <p> Wheight min: {dogId.weight_min}</p>
-            <p> Wheight max: {dogId.weight_max}</p>
-            <p> Height min: {dogId.height_min}</p>
-            <p> Height max: {dogId.height_max}</p>
+            <p>Id: {dogId.id}</p>
+
+            <p>Temperament: {dogId.temperament}</p>
+            <p>
+              Wheight (Kg): {dogId.weight_min} - {dogId.weight_max}
+            </p>
+            <p>
+              Height (Cm): {dogId.height_min} - {dogId.height_max}
+            </p>
             <p> Life span: {dogId.life_span}</p>
           </div>
           <div className={style.contbutton}>

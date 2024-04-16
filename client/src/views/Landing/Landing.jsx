@@ -23,9 +23,6 @@ function Landing() {
           want to know everything about them.
           <br></br>* We invite you to collaborate to include those we still need
           to know.
-          <br></br>* You can also register by entering your information to add
-          it to our adoption registry to give a home to the puppies that are
-          looking for a family.
         </h1>
       </div>
     </div>

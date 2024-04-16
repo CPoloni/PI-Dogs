@@ -12,12 +12,18 @@ function Card({ dog }) {
         <img src={image} alt="dog" />
       </div>
       <div className={style.cont}>
-        <h3>{name}</h3>
-        <p>{temperament}</p>
+        <h3>
+          <b>{name}</b>
+        </h3>
+
         <p>
-          Wheight min: {weight_min}
+          Temperament:
           <br />
-          Wheight max: {weight_max}
+          {temperament}
+        </p>
+        <p>
+          Wheight (Kg): {weight_min} - {weight_max}
+          <br />
         </p>
       </div>
       <div className={style.contbutton}>

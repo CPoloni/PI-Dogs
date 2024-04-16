@@ -2,8 +2,6 @@
   margin: 0;
   padding: 0;
   background-image: url("../../img/fondo\ 2.avif");
-  background-color: gold;
-  background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -15,10 +13,15 @@
   position: relative;
   padding: 10px;
   margin: 10px;
+  margin-bottom: 4px;
   top: 90px;
   text-align: center;
   align-items: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  color: rgb(47, 45, 45);
+  border: 1px solid rgb(47, 45, 45);
+  border-radius: 4px;
+  transition: all 400ms else;
 
   font-size: 22px;
   width: 150px;
@@ -33,29 +36,46 @@
 }
 
 .button:hover {
-  background-color: rgb(122, 162, 176);
+  background: #f9ce63;
+  color: rgb(47, 45, 45);
 }
+
+/* .card .button {
+  display: inline-block;
+  padding: 10px;
+  margin-bottom: 4px;
+  color: rgb(47, 45, 45);
+  border: 1px solid rgb(47, 45, 45);
+  border-radius: 4px;
+  transition: all 400ms else;
+}
+
+.card .button:hover {
+  background: #f9ce63;
+  color: rgb(47, 45, 45);
+} */
 
 .textLeft {
   position: relative;
   top: -110px;
   text-align: center;
-  color: black;
+  color: rgb(47, 45, 45);
   font-size: 40px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .textContainer {
   position: relative;
-  top: 500px;
-  height: 120px;
-  left: 170px;
+  top: 450px;
+  height: 70px;
+  left: 250px;
+
   background-color: rgba(241, 238, 191, 0.945);
   padding: 30px;
   border-radius: 25px;
   display: flex;
   flex-wrap: wrap;
-  width: 1650px;
+  width: 1350px;
+
   justify-content: center;
   opacity: 0.45;
 }

@@ -1,27 +1,40 @@
 .form {
   background-image: url("../../img/perro\ mirando.jpg");
-  background-color: gold;
+
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
   height: 100vh;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  float: left;
-  margin-left: 350px;
-  width: 750px;
-  height: 550px;
-  margin-bottom: 100px;
-  margin-top: 140px;
-  border-radius: 15px;
-  overflow: hidden;
-  background: #f2b50f;
-  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
 
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+.newDogform {
+  top: 40px;
+  left: -350px;
+
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #f2b50f;
+}
+
+.newDogform select {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.newDogform label {
+  font-weight: bold;
+}
+
+.newDogform input,
+input {
+  align-content: center;
+  width: 100%;
+  padding: 4px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
